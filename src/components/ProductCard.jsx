@@ -143,16 +143,16 @@ const ProductCard = ({
                         color: "black",
                         backgroundColor: "#A6C9DE",
                     }}
-                    onMouseOver={(e) => (
-                        (e.currentTarget.style.backgroundColor = "#011638"),
-                        (e.currentTarget.style.color = "#F9F6F0"),
-                        (e.currentTarget.style.border = "2px solid #A6C9DE")
-                    )}
-                    onMouseOut={(e) => (
-                        (e.currentTarget.style.backgroundColor = "#A6C9DE"),
-                        (e.currentTarget.style.color = "initial"),
-                        (e.currentTarget.style.border = "2px solid #011638")
-                    )}>
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.backgroundColor = "#011638";
+                        e.currentTarget.style.color = "#F9F6F0";
+                        e.currentTarget.style.border = "2px solid #A6C9DE";
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.backgroundColor = "#A6C9DE";
+                        e.currentTarget.style.color = "initial";
+                        e.currentTarget.style.border = "2px solid #011638";
+                    }}>
                     Add to cart
                 </button>
             </div>

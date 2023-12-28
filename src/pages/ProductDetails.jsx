@@ -10,23 +10,24 @@ const ProductDetails = () => {
     const [productInfo, setProductInfo] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedRotation, setSelectedRotation] = useState(0);
-    const fetchProductDetails = async () => {
-        try {
-            setIsLoading(true);
-            const { data } = await axios.get(
-                `https://fakestoreapi.com/products/${productId}`
-            );
-            setProductInfo(data);
-            console.log(data);
-        } catch (ex) {
-            console.log(ex);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+
     useEffect(() => {
+        const fetchProductDetails = async () => {
+            try {
+                setIsLoading(true);
+                const { data } = await axios.get(
+                    `https://fakestoreapi.com/products/${productId}`
+                );
+                setProductInfo(data);
+                console.log(data);
+            } catch (ex) {
+                console.log(ex);
+            } finally {
+                setIsLoading(false);
+            }
+        };
         fetchProductDetails();
-    }, []);
+    }, [productId]);
 
     const ImageShowcase = () => {
         const smallImageStyles = {
