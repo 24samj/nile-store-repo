@@ -1,0 +1,39 @@
+.back-home-btn-container {
+    --borderColor: #03a9f3;
+}
+
+.back-home-btn-container {
+    position: relative;
+    margin: auto;
+    border: 1px solid var(--borderColor);
+    cursor: pointer;
+}
+
+.back-home-btn-container::before,
+.back-home-btn-container::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.back-home-btn-container::before {
+    top: -5px;
+    left: -5px;
+    border-top: 1px solid var(--borderColor);
+    border-left: 1px solid var(--borderColor);
+}
+
+.back-home-btn-container::after {
+    right: -5px;
+    bottom: -5px;
+    border-bottom: 1px solid var(--borderColor);
+    border-right: 1px solid var(--borderColor);
+}
+
+.back-home-btn-container:hover::before,
+.back-home-btn-container:hover::after {
+    width: calc(100% + 9px);
+    height: calc(100% + 9px);
+}
