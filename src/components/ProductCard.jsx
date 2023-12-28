@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({
@@ -8,10 +9,37 @@ const ProductCard = ({
     rating,
     productId,
 }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [rotation, setRotation] = useState(0);
+
     const navigate = useNavigate();
+
+    const handleCardClick = () => {
+        navigate(`/products/${productId}`);
+    };
+
+    const handleAddToCartClick = (e) => {
+        // Prevent propagation for the time being
+        e.stopPropagation();
+    };
+
+    useEffect(() => {
+        let interval;
+
+        if (isHovered) {
+            interval = setInterval(() => {
+                setRotation((prevRotation) => prevRotation + 90);
+            }, 1500);
+        }
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [isHovered]);
+
     return (
         <div
-            onClick={() => navigate(`/products/${productId}`)}
+            onClick={handleCardClick}
             className="card-container"
             style={{
                 height: "400px",
@@ -25,17 +53,26 @@ const ProductCard = ({
                 transition: ".2s all",
                 boxShadow: "0px 0px 10px rgba(1,22,56, 0.3)",
             }}
-            onMouseOver={(e) =>
-                (e.currentTarget.style.transform = "scale(1.05)")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+            onMouseOver={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+                setIsHovered(true);
+            }}
+            onMouseOut={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                setIsHovered(false);
+                setRotation(0);
+            }}>
             <div
                 className="image"
                 style={{ height: "50%", width: "80%", marginTop: 25 }}>
                 <img
                     src={imageUrl}
                     alt=""
-                    style={{ height: "100%", width: "100%" }}
+                    style={{
+                        height: "100%",
+                        width: "100%",
+                        transform: `rotate(${rotation}deg)`,
+                    }}
                 />
             </div>
 
@@ -94,6 +131,7 @@ const ProductCard = ({
                     width: "80%",
                 }}>
                 <button
+                    onClick={handleAddToCartClick}
                     className="add-to-cart-btn"
                     style={{
                         width: "100%",

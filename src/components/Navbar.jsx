@@ -15,24 +15,33 @@ const Navbar = ({ enableSearchBar, searchString, setSearchString }) => {
                 backgroundColor: "#011638",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-around",
                 position: "sticky",
-                gap: enableSearchBar ? "0" : "50vw",
-                top: 0,
+                top: "0",
+                gap: enableSearchBar ? "0" : "49.5vw",
                 zIndex: 1,
             }}>
             <h1
                 className="logo-container"
                 style={{
                     height: "100%",
+                    width: "25%",
                     display: "flex",
                     alignItems: "center",
                     color: "#F9F6F0",
                     fontSize: 24,
-                    fontWeight: "bold",
                     cursor: "pointer",
+                    fontFamily: "Lobster",
+                    letterSpacing: "3px",
+                    justifyContent: "center",
+                    transition: ".2s ease-in-out",
                 }}
-                onClick={() => navigate("/")}>
+                onClick={() => navigate("/")}
+                onMouseEnter={(e) =>
+                    (e.currentTarget.style.letterSpacing = "4px")
+                }
+                onMouseLeave={(e) =>
+                    (e.currentTarget.style.letterSpacing = "3px")
+                }>
                 Nile Store
             </h1>
             {enableSearchBar && (
@@ -40,7 +49,7 @@ const Navbar = ({ enableSearchBar, searchString, setSearchString }) => {
                     className="searchbar-container"
                     style={{
                         height: "100%",
-                        width: "32%",
+                        width: "50%",
                         display: "flex",
                         alignItems: "center",
                         color: "#F9F6F0",
@@ -68,7 +77,13 @@ const Navbar = ({ enableSearchBar, searchString, setSearchString }) => {
 
             <div
                 className="navbar-actions-container"
-                style={{ display: "flex", gap: "5vw", color: "white" }}>
+                style={{
+                    display: "flex",
+                    gap: "5vw",
+                    color: "white",
+                    width: "25%",
+                    justifyContent: "center",
+                }}>
                 <box-icon
                     type={profileIconType}
                     name="id-card"
@@ -76,6 +91,7 @@ const Navbar = ({ enableSearchBar, searchString, setSearchString }) => {
                     style={{ cursor: "pointer" }}
                     onMouseEnter={() => setProfileIconType("solid")}
                     onMouseLeave={() => setProfileIconType("regular")}
+                    onClick={() => navigate("/users/1")}
                 />
                 <box-icon
                     type={cartIconType}

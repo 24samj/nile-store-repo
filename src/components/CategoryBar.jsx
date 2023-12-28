@@ -22,13 +22,21 @@ const CategoryBar = ({ categories, allProductsData }) => {
                         cursor: "pointer",
                         fontSize: 18,
                         fontWeight: 600,
-                        padding: 5,
+                        padding: 10,
+                        backgroundColor: "rgba(12, 116, 137)",
+                        transition: ".2s all ease",
+                        color: "white",
+                        height: "80%",
+                        display: "flex",
+                        alignItems: "center",
                     }}
                     onMouseEnter={(e) =>
-                        (e.currentTarget.style.border = "1px solid red")
+                        (e.currentTarget.style.backgroundColor =
+                            "rgba(10, 93, 110)")
                     }
                     onMouseOut={(e) =>
-                        (e.currentTarget.style.border = "initial")
+                        (e.currentTarget.style.backgroundColor =
+                            "rgba(12, 116, 137)")
                     }
                     onClick={() => navigate(`/${category}`)}>
                     {category.toUpperCase()}

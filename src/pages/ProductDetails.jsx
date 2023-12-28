@@ -285,10 +285,11 @@ const ProductDetails = () => {
                             <div
                                 className="name-rating-category"
                                 style={{
-                                    height: "40%",
+                                    height: "35%",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "center",
+                                    gap: "5px",
                                 }}>
                                 <h2>{productInfo.title}</h2>
                                 <RatingDisplay />
@@ -298,10 +299,11 @@ const ProductDetails = () => {
                             <div
                                 className="price-emi-info"
                                 style={{
-                                    height: "30%",
+                                    height: "35%",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "center",
+                                    gap: "2px",
                                 }}>
                                 <h2>${productInfo.price?.toFixed(2)}</h2>
                                 <p>Inclusive of all taxes.</p>
@@ -375,6 +377,7 @@ const ProductDetails = () => {
                                 style={{
                                     display: "flex",
                                     gap: 5,
+                                    alignItems: "center",
                                 }}>
                                 <box-icon name="current-location" />
                                 Deliver to 110001

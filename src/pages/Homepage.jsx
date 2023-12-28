@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CarouselComp from "../components/Carousel";
+import Carousel from "../components/Carousel";
 import CategoryBar from "../components/CategoryBar";
 import Navbar from "../components/Navbar";
 import axios from "axios";
@@ -57,7 +57,7 @@ const Homepage = () => {
                 categories={categories}
                 allProductsData={allProductsData}
             />
-            <CarouselComp allProductsData={allProductsData} />
+            <Carousel allProductsData={allProductsData} isLoading={isLoading} />
             <div
                 className="trending-header"
                 style={{
