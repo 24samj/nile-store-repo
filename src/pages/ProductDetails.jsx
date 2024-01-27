@@ -172,32 +172,31 @@ const ProductDetails = () => {
         );
     };
 
-    const OfferCard = ({ offerTitle, offerInfo }) => {
-        return (
-            <div
-                className="card-container"
-                style={{
-                    height: "100%",
-                    width: "100%",
-                    border: "1px solid black",
-                    borderRadius: 10,
-                    padding: 5,
-                    cursor: "pointer",
-                    transition: ".2s all ease",
-                }}
-                onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.05)";
-                }}
-                onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
-                }}>
-                <h4>{offerTitle}</h4>
-                <p>{offerInfo}</p>
-            </div>
-        );
-    };
-
     const OffersDisplay = () => {
+        const OfferCard = ({ offerTitle, offerInfo }) => {
+            return (
+                <div
+                    className="card-container"
+                    style={{
+                        height: "100%",
+                        width: "100%",
+                        border: "1px solid black",
+                        borderRadius: 10,
+                        padding: 10,
+                        cursor: "pointer",
+                        transition: ".2s all ease",
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "scale(1.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                    }}>
+                    <h4>{offerTitle}</h4>
+                    <p>{offerInfo}</p>
+                </div>
+            );
+        };
         return (
             <div
                 className="row-container"
@@ -239,7 +238,14 @@ const ProductDetails = () => {
                     cursor: "pointer",
                     fontSize: 16,
                     fontWeight: 700,
-                }}>
+                    transition: ".2s all ease",
+                }}
+                onMouseEnter={(e) =>
+                    (e.currentTarget.style.borderColor = "black")
+                }
+                onMouseLeave={(e) =>
+                    (e.currentTarget.style.borderColor = borderColor)
+                }>
                 {text}
             </button>
         );
@@ -333,11 +339,11 @@ const ProductDetails = () => {
                             className="price-checkout-container"
                             style={{
                                 width: "30%",
-                                padding: 10,
+                                padding: 20,
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: "1vh",
-                                border: "1px solid black",
+                                border: "2px solid black",
                                 borderRadius: 25,
                                 marginTop: 50,
                                 marginLeft: 50,
@@ -351,7 +357,7 @@ const ProductDetails = () => {
                                         .toString()
                                         .split(".")[0]
                                 }
-                                <sup style={{ fontSize: 14 }}>
+                                <sup style={{ fontSize: 14, marginLeft: 3 }}>
                                     {
                                         productInfo?.price
                                             ?.toFixed(2)
@@ -420,7 +426,7 @@ const ProductDetails = () => {
                                 }}>
                                 <PurchaseButton
                                     text={"Add to Cart"}
-                                    textColor={"black"}
+                                    textColor={"white"}
                                     bgColor={"orange"}
                                     borderColor={"orange"}
                                 />

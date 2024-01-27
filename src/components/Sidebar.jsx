@@ -14,7 +14,7 @@ const Sidebar = ({ sortOption, setSortOption }) => {
                 height: "100%",
                 width: "15%",
                 border: "1px solid blue",
-                borderRadius: 25,
+                borderRadius: 15,
                 display: "flex",
                 flexDirection: "column",
                 padding: 10,
@@ -31,6 +31,7 @@ const Sidebar = ({ sortOption, setSortOption }) => {
                     value="name"
                     checked={sortOption === "name"}
                     onChange={handleSortChange}
+                    style={{ marginRight: 5 }}
                 />
                 Name
             </label>
@@ -41,6 +42,7 @@ const Sidebar = ({ sortOption, setSortOption }) => {
                     value="rating"
                     checked={sortOption === "rating"}
                     onChange={handleSortChange}
+                    style={{ marginRight: 5 }}
                 />
                 Rating
             </label>
@@ -51,6 +53,7 @@ const Sidebar = ({ sortOption, setSortOption }) => {
                     value="price1"
                     checked={sortOption === "price1"}
                     onChange={handleSortChange}
+                    style={{ marginRight: 5 }}
                 />
                 Price - Low to High
             </label>
@@ -61,6 +64,7 @@ const Sidebar = ({ sortOption, setSortOption }) => {
                     value="price2"
                     checked={sortOption === "price2"}
                     onChange={handleSortChange}
+                    style={{ marginRight: 5 }}
                 />
                 Price - High to Low
             </label>

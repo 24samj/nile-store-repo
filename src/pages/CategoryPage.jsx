@@ -2,7 +2,6 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumbs";
 import ProductsContainer from "../components/ProductsContainer";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
@@ -13,20 +12,6 @@ const CategoryPage = () => {
     const [searchString, setSearchString] = useState("");
     const [sortOption, setSortOption] = useState("name");
     const [isLoading, setIsLoading] = useState(false);
-
-    const fetchProductsInCategory = async () => {
-        try {
-            setIsLoading(true);
-            const { data } = await axios.get(
-                `https://fakestoreapi.com/products/category/${category}`
-            );
-            setCategorizedProductData(data);
-        } catch (ex) {
-            console.error(ex);
-        } finally {
-            setIsLoading(false);
-        }
-    };
 
     const filteredData = () => {
         switch (sortOption) {
@@ -52,6 +37,19 @@ const CategoryPage = () => {
     };
 
     useEffect(() => {
+        const fetchProductsInCategory = async () => {
+            try {
+                setIsLoading(true);
+                const { data } = await axios.get(
+                    `https://fakestoreapi.com/products/category/${category}`
+                );
+                setCategorizedProductData(data);
+            } catch (ex) {
+                console.error(ex);
+            } finally {
+                setIsLoading(false);
+            }
+        };
         fetchProductsInCategory();
     }, [category]);
 
